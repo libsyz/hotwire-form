@@ -5,5 +5,6 @@
       <%= f.hidden_field :order_id, value: "#{@order.id}"  %>
       <%= f.submit :next %>
     <% end %>
+    <%= button_to "back", new_order_path(order_id: "#{@order.id}"), method: :get %>
   <% end %>
 <% end %>

@@ -5,6 +5,8 @@
   <%= simple_form_for(@order, url: order_billing_path, method: :post) do |f| %>
   <%= f.input :billing_details %>
   <%= f.hidden_field :status, value: 1 %>
+  <%  f.hidden_field(:order_id, value: "#{@order.id}") unless @order.new_record? %>
   <%= f.submit :next %>
   <% end %>
+
 <% end %>

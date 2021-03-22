@@ -1,20 +1,22 @@
 class OrdersController < ApplicationController
   def new
-    @order = Order.new
+    binding.pry
+    @order = params[:order_id] ? Order.find(params[:order_id]) : Order.new
   end
 
   def billing
-    @order = Order.new(order_params)
-    @order.save
+    if params[:order][:order_id]
+      @order = Order.find(params[:order_id])
+      @order.update(order.params)
+    else
+      @order = Order.new(order_params)
+      @order.save
+    end
   end
 
   def shipping
     @order = Order.find(params[:order][:order_id])
     @order.shipping_address = order_params[:shipping_address]
-  end
-
-  def confirmation
-
   end
 
   private
