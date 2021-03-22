@@ -1,6 +1,5 @@
 class OrdersController < ApplicationController
   def new
-    binding.pry
     @order = params[:order_id] ? Order.find(params[:order_id]) : Order.new
   end
 

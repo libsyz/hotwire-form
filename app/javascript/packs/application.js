@@ -8,12 +8,23 @@
 import { Turbo } from "@hotwired/turbo-rails"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
-
+import { moveProgressBar } from './plugins/move_progress_bar.js'
 //Rails.start()
 ActiveStorage.start()
 
 import "controllers"
 
-document.addEventListener('turbo:load', () => {
+
+document.addEventListener('turbo:before-render', () => {
   // Call your JS functions here as usual
+  console.log('hello hello');
  })
+
+document.addEventListener('turbo:submit-end', (event) => {
+  moveProgressBar(event);
+})
+
+
+
+
+

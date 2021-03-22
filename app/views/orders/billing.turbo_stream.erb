@@ -1,10 +1,10 @@
 <%= turbo_stream.replace "billing" do %>
   <%= turbo_frame_tag 'billing' do %>
-    <%= simple_form_for @order, url: order_shipping_path, method: :post do |f| %>
+    <%= simple_form_for @order, url: order_shipping_path, method: :post, html: { data: { step: 'complete' } } do |f| %>
       <%= f.input :shipping_address %>
       <%= f.hidden_field :order_id, value: "#{@order.id}"  %>
       <%= f.submit :next %>
     <% end %>
-    <%= button_to "back", new_order_path(order_id: "#{@order.id}"), method: :get %>
+    <%= button_to "back", new_order_path(order_id: "#{@order.id}"), method: :get, data: { step: 'first'} %>
   <% end %>
 <% end %>

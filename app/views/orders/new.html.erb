@@ -1,12 +1,17 @@
 
 <h1> A new form, a new journey </h1>
+<div class="progress-bar">
+  <div class="first" style="color: red"> 1 </div>
+  <div class="second"> 2 </div>
+  <div class="third"> 3 </div>
+</div>
 
 <%= turbo_frame_tag 'billing' do  %>
-  <%= simple_form_for(@order, url: order_billing_path, method: :post) do |f| %>
-  <%= f.input :billing_details %>
-  <%= f.hidden_field :status, value: 1 %>
-  <%  f.hidden_field(:order_id, value: "#{@order.id}") unless @order.new_record? %>
-  <%= f.submit :next %>
+  <%= simple_form_for(@order, url: order_billing_path, method: :post,  html: { data: { step: :billing } } ) do |f| %>
+    <%= f.input :billing_details %>
+    <%= f.hidden_field :status, value: 1 %>
+    <%  f.hidden_field(:order_id, value: "#{@order.id}") unless @order.new_record? %>
+    <%= f.submit :next %>
   <% end %>
 
 <% end %>
