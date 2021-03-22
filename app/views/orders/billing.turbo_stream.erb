@@ -1,0 +1,9 @@
+<%= turbo_stream.replace "billing" do %>
+  <%= turbo_frame_tag 'billing' do %>
+    <%= simple_form_for @order, url: order_shipping_path, method: :post do |f| %>
+      <%= f.input :shipping_address %>
+      <%= f.hidden_field :order_id, value: "#{@order.id}"  %>
+      <%= f.submit :next %>
+    <% end %>
+  <% end %>
+<% end %>

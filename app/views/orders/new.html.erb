@@ -1,0 +1,10 @@
+
+<h1> A new form, a new journey </h1>
+
+<%= turbo_frame_tag 'billing' do  %>
+  <%= simple_form_for(@order, url: order_billing_path, method: :post) do |f| %>
+  <%= f.input :billing_details %>
+  <%= f.hidden_field :status, value: 1 %>
+  <%= f.submit :next %>
+  <% end %>
+<% end %>
