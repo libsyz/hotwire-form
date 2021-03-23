@@ -15,12 +15,14 @@ ActiveStorage.start()
 import "controllers"
 
 
-document.addEventListener('turbo:before-render', () => {
+document.addEventListener('turbo:click', (e) => {
   // Call your JS functions here as usual
-  console.log('hello hello');
+  moveProgressBar(event)
  })
 
+
 document.addEventListener('turbo:submit-end', (event) => {
+  console.log('hello hello!!!')
   moveProgressBar(event);
 })
 

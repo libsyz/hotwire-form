@@ -2,11 +2,9 @@ class OrdersController < ApplicationController
 
   def new
     @order = params[:order_id] ? Order.find(params[:order_id]) : Order.new
-    binding.pry
   end
 
   def billing
-    binding.pry
     if permitted_params[:order_id]
       @order = Order.find(permitted_params[:order_id])
       @order.update(billing_details: permitted_params[:billing_details])
